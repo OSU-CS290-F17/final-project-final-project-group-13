@@ -15,6 +15,7 @@ addEventButton.addEventListener('click', showAddEventModal);
 function hideEventModal(){
   var hideAddEventModal = document.getElementById('add-event-modal');
   hideAddEventModal.classList.add('hidden');
+  clearSellSomethingModalInputs();
   // call clear fields
 }
 
@@ -26,9 +27,85 @@ xEventButton.addEventListener('click', hideEventModal);
 
 
 // Clear out modal fields
+function clearSellSomethingModalInputs() {
+
+  var postTextInputElements = [
+    document.getElementById('event-name-input'),
+    document.getElementById('event-photo-input'),
+    document.getElementById('event-description-input'),
+    document.getElementById('event-location-input')
+  ];
+
+  postTextInputElements.forEach(function (inputElem) {
+    inputElem.value = '';
+  });
+  var timeInput = document.querySelector('input[type="time"]');
+  timeInput.value = "00:00";
+
+  var monthInput = document.querySelector('input[type="date"]');
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+
+  var yyyy = today.getFullYear();
+  if(dd<10){
+    dd='0'+dd;
+  }
+  if(mm<10){
+    mm='0'+mm;
+  }
+  var today = dd+'/'+mm+'/'+yyyy;
+  var today = yyyy + '-' + mm + '-' + dd;
+  monthInput.value = today;
+}
+
+//create post
+
+var addEventButton = document.getElementById('modal-accept');
+addEventButton.addEventListener('click', parseInfo);
 
 //insert new post function
 
+function insertNewPost(location, date, time, photoURL, description, title){
+  var postArg = {
+  location: location,
+  date: date,
+  time: time,
+  photoURL: photoURL,
+  description: description,
+  title: title
+};
+
+var postHTML = Handlebars.templates.post(postArg);
+
+var postContainer = document.getElementById("posts")
+
+postContainer.insertAdjacentHTML('beforeend', postHTML);
+
+}
+
 //parse fields function
 
+function parseInfo(){
+  var location = document.getElementById('event-location-input').value.trim();
+  var date = document.getElementById('event-date-input').value;
+  var time = document.getElementById('event-time-input').value;
+  var photoURL = document.getElementById('event-photo-input').value.trim();
+  var description = document.getElementById('event-description-input').value.trim();
+  var title = document.getElementById('event-name-input').value.trim();
+
+  if (!description || !title || !photoURL || !time || !date || !location) {
+    alert("You must fill in all of the fields!");
+  }
+  else {
+    hideEventModal();
+    console.log(location);
+    console.log(date);
+    console.log(time);
+    console.log(photoURL);
+    console.log(description);
+    console.log(title);
+    insertNewPost(location, date, time, photoURL, description, title);
+  }
+}
 //wait until all dom elements have been loaded in
