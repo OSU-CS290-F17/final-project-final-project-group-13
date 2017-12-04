@@ -77,7 +77,7 @@ function insertNewPost(location, date, time, photoURL, description, title){
 };
 
 var postHTML = Handlebars.templates.post(postArg);
-
+// this right here needs to be fixed
 var postContainer = document.getElementById("posts")
 
 postContainer.insertAdjacentHTML('beforeend', postHTML);
