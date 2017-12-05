@@ -65,7 +65,7 @@ var addEventButton = document.getElementById('modal-accept');
 addEventButton.addEventListener('click', parseInfo);
 
 //insert new post function
-
+insertNewPost("test","test", "test, test","test","test");
 function insertNewPost(location, date, time, photoURL, description, title){
   var postArg = {
   location: location,
