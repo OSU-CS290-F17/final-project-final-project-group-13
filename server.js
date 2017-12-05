@@ -14,7 +14,7 @@ var mongoURL = 'mongodb://' + 'cs290_larseno' + ':' + 'cs290_larseno' +
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-var postData = require('./postData');
+//var postData = require('./postData');
 
 
 
@@ -27,7 +27,7 @@ var allPosts = mongoDBDatabase.collection('posts');
     } else {
       console.log("== query results:", results);
       res.status(200).render('postPage', {
-      postItems: postData
+      postItems: results
       });
     }
   });
