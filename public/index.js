@@ -89,7 +89,7 @@ postRequest.addEventListener('load', function(event){
   }
   else {
     var postHTML = Handlebars.templates.post(postArg);
-    // this right here needs to be fixed
+
     var postContainer = document.getElementById("posts")
 
     postContainer.insertAdjacentHTML('beforeend', postHTML);
@@ -97,6 +97,11 @@ postRequest.addEventListener('load', function(event){
   }
 });
 postRequest.send(requestBody);
+
+
+// var postHTML = Handlebars.templates.post(postArg);
+//
+// var postContainer = document.getElementById("posts")
 
 
 
@@ -126,4 +131,3 @@ function parseInfo(){
     insertNewPost(location, date, time, photoURL, description, title);
   }
 }
-//wait until all dom elements have been loaded in

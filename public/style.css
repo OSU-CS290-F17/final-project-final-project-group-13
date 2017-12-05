@@ -2,6 +2,7 @@ body{
   font-family: 'Scada', sans-serif;
   margin: 0;
   background-color: #3C493C;
+  color: #ACCE8E;
 }
 
 a {
@@ -31,9 +32,30 @@ header {
   border-radius: 30px;
   border: 1px solid;
   display: inline-flex;
-  padding: 10px;
-  width: 350px;
+  padding: 15px;
+  width: 320px;
   margin: 10px;
+}
+
+#toTop {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: 90%;
+  left: 90%;
+  font-size: 50px;
+  color: #162C02;
+}
+
+
+#addEvent {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: 2%;
+  left: 90%;
+  font-size: 50px;
+  color: #162C02;
 }
 
 button {
@@ -43,6 +65,20 @@ button {
   height: 30px;
   background-color: #AAB8A3;
 
+}
+
+#toTop:hover {
+background-color: #ACCE8E;
+}
+
+#addEvent:hover {
+  background-color: #ACCE8E;
+}
+
+button:hover {
+  border: solid;
+  border-color: #ACCE8E;
+  border-width: 1px;
 }
 
 .eventDetails {
@@ -82,7 +118,8 @@ button {
   min-width: 350px;
   min-height: 300px;
   margin: 40px auto;
-  background-color: #fff;
+  background-color: #3C493C;
+  color: #ACCE8E;
   border-radius: 15px;
 }
 
@@ -104,6 +141,7 @@ button {
   right: 0;
   z-index: 1010;
   overflow: scroll;
+   background-color: rgba(0, 0, 0, 0.85);
 }
 
 #modal-close {
