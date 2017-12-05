@@ -65,8 +65,13 @@ var addEventButton = document.getElementById('modal-accept');
 addEventButton.addEventListener('click', parseInfo);
 
 //insert new post function
-insertNewPost("test","date", "time"," ","test","test");
+
 function insertNewPost(location, date, time, photoURL, description, title){
+
+  var postRequest = new XMLHttpRequest();
+  var postURL = "/addPost";
+  postRequest.open('POST', postURL);
+
   var postArg = {
   location: location,
   date: date,
@@ -75,12 +80,25 @@ function insertNewPost(location, date, time, photoURL, description, title){
   description: description,
   title: title
 };
+var requestBody = JSON.stringify(postArg);
+postRequest.setRequestHeader('Content-Type','application/json');
 
-var postHTML = Handlebars.templates.post(postArg);
-// this right here needs to be fixed
-var postContainer = document.getElementById("posts")
+postRequest.addEventListener('load', function(event){
+  if(event.target.status !== 200){
+    alert("Error storing post in database:\n\n" + event.target.response);
+  }
+  else {
+    var postHTML = Handlebars.templates.post(postArg);
+    // this right here needs to be fixed
+    var postContainer = document.getElementById("posts")
 
-postContainer.insertAdjacentHTML('beforeend', postHTML);
+    postContainer.insertAdjacentHTML('beforeend', postHTML);
+
+  }
+});
+postRequest.send(requestBody);
+
+
 
 }
 
