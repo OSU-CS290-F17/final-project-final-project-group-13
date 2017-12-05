@@ -78,6 +78,7 @@ function insertNewPost(location, date, time, photoURL, description, title){
 
 var postHTML = Handlebars.templates.post(postArg);
 // this right here needs to be fixed
+// apparently "handlebars is not a function"
 var postContainer = document.getElementById("posts")
 
 postContainer.insertAdjacentHTML('beforeend', postHTML);
@@ -108,4 +109,3 @@ function parseInfo(){
     insertNewPost(location, date, time, photoURL, description, title);
   }
 }
-//wait until all dom elements have been loaded in
