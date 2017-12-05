@@ -9,7 +9,9 @@ a {
   text-decoration: none;
   color: #26529F;
 }
-
+#logo {
+  height: 150px;
+}
 a:hover {
   text-decoration: underline;
 }
