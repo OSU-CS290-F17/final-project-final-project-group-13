@@ -87,10 +87,10 @@ postRequest.addEventListener('load', function(event){
   if(event.target.status !== 200){
     alert("Error storing post in database:\n\n" + event.target.response);
   }
-  
+
 });
 postRequest.send(requestBody);
-  var postHTML = Handlebars.templates.post(postArg);
+var postHTML = Handlebars.templates.post(postArg);
 var postContainer = document.getElementById("posts")
 
 postContainer.insertAdjacentHTML('beforeend', postHTML);
